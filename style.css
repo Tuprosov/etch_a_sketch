@@ -32,3 +32,24 @@
   body {
     font-family: Roboto, sans-serif;
   }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    max-width: 1800px;
+    padding: 0 15px;
+    margin: 0 auto;
+  }
+  .main {
+    display: flex;
+    flex-wrap: wrap;
+    width: 400px;
+    height: 400px;
+  }
+
+  .square {
+    width: calc(100% / 16);
+    height: calc(100% / 16);
+    background-color: blue;
+    border: 1px solid white;
+  }
