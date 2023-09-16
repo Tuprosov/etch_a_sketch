@@ -1,7 +1,7 @@
 @font-face {
     font-family: "Roboto";
     src: url("fonts/Roboto-regular.woff2") format("woff2"),
-      url("fonts/Roboto-Regular.woff") format("woff");
+         url("fonts/Roboto-Regular.woff") format("woff");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -10,8 +10,6 @@
   html {
     font-size: 10px;
     box-sizing: border-box;
-    background: url('background.jpeg');
-    background-size: cover;
   }
 
   *,
@@ -29,27 +27,60 @@
     max-width: 100%;
   }
 
+  p {
+    margin: 0;
+  }
+
   body {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
     font-family: Roboto, sans-serif;
+  }
+
+  h1 {
+    font-size: 5rem;
+    align-self: center;
+    margin: 0;
   }
 
   .container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    gap: 4rem;
     max-width: 1800px;
     padding: 0 15px;
-    margin: 0 auto;
   }
+
+  .mode-selec {
+    align-self: center;
+    font-size: 3rem;
+  }
+
+  .btn-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+
   .main {
     display: flex;
     flex-wrap: wrap;
-    width: 400px;
-    height: 400px;
+    width: 600px;
+    height: 600px;
   }
 
   .square {
-    width: calc(100% / 16);
-    height: calc(100% / 16);
-    background-color: blue;
-    border: 1px solid white;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(161, 155, 155);
   }
+
+  .color-picker {
+    appearance: none;
+    border: none;
+    align-self: center;
+}
+
+ 
