@@ -3,6 +3,7 @@ const mainbox = document.createElement('div');
 mainbox.setAttribute('class', 'main')
 const container = document.querySelector('.container');
 container.appendChild(mainbox) 
+
 // get all the buttons
 const colorBtn = document.querySelector('.colorBtn');
 const rainbowBtn = document.querySelector('.rainbowBtn');
@@ -10,7 +11,10 @@ const eraserBtn = document.querySelector('.eraserBtn');
 const clearBtn = document.querySelector('.clearBtn');
 const colorPicker = document.querySelector('.color-picker');
 const gridSize = document.querySelector('.gridSizer');
-// create a flag variable to use in if conditons to determine the mode
+const sizeText = document.querySelector('.size-text');
+const btnArray = [colorBtn, rainbowBtn, eraserBtn]
+
+// create variable to use in if conditons to determine the mode
 let mode = ''
 
 // Track the mouse state for event handling
@@ -18,10 +22,26 @@ let mouseDown = false;
 document.body.onmousedown = () => (mouseDown = true);
 document.body.onmouseup = () => (mouseDown = false);
 
+// function to toggle the active class between buttons
+function toggleButton(clickedBtn) {
+    btnArray.forEach(btn => {
+        btn.classList.remove('active');
+    })
+    clickedBtn.classList.add('active')
+}
 // Event handlers for switching modes
-colorBtn.onclick = () => mode = 'color'
-rainbowBtn.onclick = () => mode = 'rainbow'
-eraserBtn.onclick = () => mode = 'eraser'
+colorBtn.onclick = () => {
+    mode = 'color'
+    toggleButton(colorBtn)
+}
+rainbowBtn.onclick = () => {
+    mode = 'rainbow'
+    toggleButton(rainbowBtn)
+}
+eraserBtn.onclick = () => {
+    mode = 'eraser'
+    toggleButton(eraserBtn)
+}
 
 // Event handler for clearing the grid and creating a new one
 clearBtn.onclick = () => {
@@ -35,9 +55,14 @@ gridSize.onchange = () => {
     createGrid(mainbox, gridSize.value)
 }
 
+// event handler for changing the text of grid sizer
+gridSize.onmousemove = () => {
+    sizeText.textContent = `${gridSize.value} X ${gridSize.value}`
+}
+
 // changing the color of divs depending on chosen mode
 function changeColor(e) {
-    if(e.type === 'mouseover' && !mouseDown) return
+    if (e.type === 'mouseover' && !mouseDown) return
     if (mode === 'rainbow') {
         const randomR = Math.floor(Math.random() * 256)
         const randomG = Math.floor(Math.random() * 256)
